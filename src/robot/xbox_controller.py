@@ -6,7 +6,7 @@ import time
 from robot.xbox_state import XboxState
 
 
-class XboxJoystick:
+class XboxController:
     EVENT_LOOP_DELAY = 0.05
     WAITING_LOOP_DELAY = 1.0
     CLOCK_TICKS = 20
@@ -29,8 +29,8 @@ class XboxJoystick:
 
     def __init__(self):
         self.connected = False
-        self.joystick = None
-        self.joystick_name = None
+        self.controller = None
+        self.controller_name = None
         self.device_index = None
         self.state = XboxState()
         self.clock = pygame.time.Clock()
@@ -38,26 +38,26 @@ class XboxJoystick:
         os.environ["SDL_VIDEODRIVER"] = "dummy"
 
         pygame.init()
-        pygame.joystick.init()
+        pygame.controller.init()
 
     def _connect_event(self, event):
         self.device_index = event.device_index
-        self.joystick = pygame.joystick.Joystick(self.device_index)
-        self.joystick_name = self.joystick.get_name()
+        self.controller = pygame.controller.Controller(self.device_index)
+        self.controller_name = self.controller.get_name()
         self.connected = True
 
         return self
 
-    def connect(self, wait_for_joystick_message="Waiting for Xbox Controller"):
-        if wait_for_joystick_message:
+    def connect(self, wait_for_controller_message="Waiting for Xbox Controller"):
+        if wait_for_controller_message:
             while True:
                 for event in pygame.event.get():
                     if event.type == pygame.JOYDEVICEADDED:
                         return self._connect_event(event)
 
-                print(wait_for_joystick_message)
+                print(wait_for_controller_message)
 
-                time.sleep(XboxJoystick.WAITING_LOOP_DELAY)
+                time.sleep(XboxController.WAITING_LOOP_DELAY)
 
     @classmethod
     def quit_event(cls, event):
@@ -88,7 +88,7 @@ class XboxJoystick:
     @classmethod
     def wheel_speeds(cls, x_axis, y_axis, max_speed=1.0):
         """
-        Converts joystick axes to differential wheel speeds.
+        Converts controller axes to differential wheel speeds.
         y_axis: forward/backward (-1 to 1)
         x_axis: left/right (-1 to 1)
         """
