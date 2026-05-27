@@ -7,7 +7,6 @@ from time import sleep
 controller = XboxController().connect()
 
 
-
 def test_xbox_controller():
     print("Controller connected")
 

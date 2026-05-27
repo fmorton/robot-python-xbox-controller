@@ -6,8 +6,6 @@ import time
 from robot.xbox_state import XboxState
 
 
-
-
 class XboxController:
     EVENT_LOOP_DELAY = 0.05
     WAITING_LOOP_DELAY = 1.0
