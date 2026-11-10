@@ -53,7 +53,7 @@ class XboxState:
         if debugging:
             print(self.state_string())
 
-    def dictionary(self):
+    def dictionary(self, debugging=False):
         d = {}
         d["left_x"] = self.left_x()
         d["left_y"] = self.left_y()
@@ -80,6 +80,9 @@ class XboxState:
         d["d_pad_down"] = self.button_down_milliseconds(12)
         d["d_pad_left"] = self.button_down_milliseconds(13)
         d["d_pad_right"] = self.button_down_milliseconds(14)
+
+        if debugging:
+            print(d)
 
         return d
 
