@@ -53,6 +53,36 @@ class XboxState:
         if debugging:
             print(self.state_string())
 
+    def dictionary(self):
+        d = {}
+        d["left_x"] = self.left_x()
+        d["left_y"] = self.left_y()
+        d["right_x"] = self.right_x()
+        d["right_y"] = self.right_y()
+        d["left_trigger"] = self.left_trigger()
+        d["right_trigger"] = self.right_trigger()
+
+        for button in range(16):
+            d[str(button)] = self.button_down_milliseconds(button)
+
+        d["a_button"] = self.button_down_milliseconds(0)
+        d["b_button"] = self.button_down_milliseconds(1)
+        d["x_button"] = self.button_down_milliseconds(2)
+        d["y_button"] = self.button_down_milliseconds(3)
+        d["view_button"] = self.button_down_milliseconds(4)
+        d["xbox_button"] = self.button_down_milliseconds(5)
+        d["menu_button"] = self.button_down_milliseconds(6)
+        d["left_stick_click"] = self.button_down_milliseconds(7)
+        d["right_stick_click"] = self.button_down_milliseconds(8)
+        d["left_bumper"] = self.button_down_milliseconds(9)
+        d["right_bumper"] = self.button_down_milliseconds(10)
+        d["d_pad_up"] = self.button_down_milliseconds(11)
+        d["d_pad_down"] = self.button_down_milliseconds(12)
+        d["d_pad_left"] = self.button_down_milliseconds(13)
+        d["d_pad_right"] = self.button_down_milliseconds(14)
+
+        return d
+
     def left_x(self):
         return self.axis_value[0]
 

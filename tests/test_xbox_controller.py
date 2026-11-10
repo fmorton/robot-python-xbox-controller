@@ -89,5 +89,20 @@ def test_run():
     controller.run(runner)
 
 
+def runner_dictionary(controller):
+    print("dictionary:", controller.state.dictionary())
+
+    sleep(XboxController.EVENT_LOOP_DELAY)
+
+    if controller.state.button_down_milliseconds(XboxController.BUTTON_XBOX):
+        return False
+
+    return True
+
+
+def test_run_dictionary():
+    controller.run(runner_dictionary)
+
+
 def test_tick():
     controller.tick(30)
