@@ -1,0 +1,16 @@
+    #  linux
+    BUTTON_A = 0
+    BUTTON_B = 1
+    BUTTON_X = 3
+    BUTTON_Y = 4
+    BUTTON_VIEW = 10  #  left middle button
+    BUTTON_XBOX = 15  #  center middle button
+    BUTTON_MENU = 11  #  right middle button
+    BUTTON_LEFT_JOYSTICK = 13
+    BUTTON_RIGHT_JOYSTICK = 14
+    BUTTON_LEFT_BUMPER = 5    #JOYHATMOTION
+    BUTTON_RIGHT_BUMPER = 4   #JOYHATMOTION
+    BUTTON_FORWARD = (0,1)       #JOYHATMOTION
+    BUTTON_BACKWARD = (0,-1)      #JOYHATMOTION
+    BUTTON_LEFT = 13          #JOYHATMOTION
+    BUTTON_RIGHT = 14         #JOYHATMOTION
