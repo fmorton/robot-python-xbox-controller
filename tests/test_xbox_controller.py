@@ -2,6 +2,7 @@ import pygame
 import pytest
 
 from robot.xbox_controller import XboxController
+from robot.xbox_state import XboxState
 from time import sleep
 
 controller = XboxController().connect()
@@ -79,7 +80,7 @@ def runner(controller):
 
     sleep(XboxController.EVENT_LOOP_DELAY)
 
-    if controller.state.button_down_milliseconds(XboxController.BUTTON_XBOX):
+    if controller.state.button_down_milliseconds(XboxState.BUTTON_XBOX):
         return False
 
     return True
@@ -94,7 +95,7 @@ def runner_dictionary(controller):
 
     sleep(XboxController.EVENT_LOOP_DELAY)
 
-    if controller.state.button_down_milliseconds(XboxController.BUTTON_XBOX):
+    if controller.state.button_down_milliseconds(XboxState.BUTTON_XBOX):
         return False
 
     return True

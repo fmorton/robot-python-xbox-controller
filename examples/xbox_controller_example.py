@@ -18,5 +18,5 @@ while running:
         elif event.type == pygame.JOYBUTTONDOWN:
             print(f"Button {event.button} pressed on controller {event.joy}")
 
-            if event.button == XboxController.BUTTON_XBOX:
+            if event.button == XboxState.BUTTON_XBOX:
                 running = False

@@ -5,6 +5,22 @@ import time
 class XboxState:
     JOYSTICK_DRIFT = 0.18
 
+    BUTTON_A = 0
+    BUTTON_B = 1
+    BUTTON_X = 2
+    BUTTON_Y = 3
+    BUTTON_VIEW = 4  #  left middle button
+    BUTTON_XBOX = 5  #  center middle button
+    BUTTON_MENU = 6  #  right middle button
+    BUTTON_LEFT_JOYSTICK = 7
+    BUTTON_RIGHT_JOYSTICK = 8
+    BUTTON_LEFT_BUMPER = 9
+    BUTTON_RIGHT_BUMPER = 10
+    BUTTON_FORWARD = 11
+    BUTTON_BACKWARD = 12
+    BUTTON_LEFT = 13
+    BUTTON_RIGHT = 14
+
     def __init__(self):
         self.axis_value = [0.0, 0.0, 0.0, 0.0, -1.0, -1.0]
         self.button_down_at = [0] * 16

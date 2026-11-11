@@ -11,22 +11,6 @@ class XboxController:
     WAITING_LOOP_DELAY = 1.0
     CLOCK_TICKS = 20
 
-    BUTTON_A = 0
-    BUTTON_B = 1
-    BUTTON_X = 2
-    BUTTON_Y = 3
-    BUTTON_VIEW = 4  #  left middle button
-    BUTTON_XBOX = 5  #  center middle button
-    BUTTON_MENU = 6  #  right middle button
-    BUTTON_LEFT_JOYSTICK = 7
-    BUTTON_RIGHT_JOYSTICK = 8
-    BUTTON_LEFT_BUMPER = 9
-    BUTTON_RIGHT_BUMPER = 10
-    BUTTON_FORWARD = 11
-    BUTTON_BACKWARD = 12
-    BUTTON_LEFT = 13
-    BUTTON_RIGHT = 14
-
     def __init__(self):
         self.connected = False
         self.controller = None

@@ -84,7 +84,7 @@ Xbox Controller Example
         elif event.type == pygame.JOYBUTTONDOWN:
             print(f"Button {event.button} pressed on controller {event.joy}")
 
-            if event.button == XboxController.BUTTON_XBOX:
+            if event.button == XboxState.BUTTON_XBOX:
                 running = False
 
 
@@ -102,7 +102,7 @@ The run() loop maintains the state of the controllers and all buttons for proces
   def robot(controller):
     print("runner", controller.state.state_string())
 
-    if controller.state.button_down_milliseconds(XboxController.BUTTON_XBOX):
+    if controller.state.button_down_milliseconds(XboxState.BUTTON_XBOX):
         return False
 
     sleep(XboxController.EVENT_LOOP_DELAY)
