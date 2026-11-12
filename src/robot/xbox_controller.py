@@ -1,9 +1,13 @@
 import math
 import os
+import platform
 import pygame
 import time
 
 from robot.xbox_state import XboxState
+from robot.xbox_state_darwin import XboxStateDarwin
+from robot.xbox_state_linux import XboxStateLinux
+from robot.xbox_state_windows import XboxStateWindows
 
 
 class XboxController:
@@ -11,13 +15,14 @@ class XboxController:
     WAITING_LOOP_DELAY = 1.0
     CLOCK_TICKS = 20
 
-    def __init__(self):
+    def __init__(self, state=None):
         self.connected = False
         self.controller = None
         self.controller_name = None
         self.device_index = None
-        self.state = XboxState()
         self.clock = pygame.time.Clock()
+
+        self.state = globals()["XboxState" + platform.system()]() if (state is None) else state
 
         os.environ["SDL_VIDEODRIVER"] = "dummy"
 
