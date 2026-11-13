@@ -51,23 +51,41 @@ class XboxState:
     def print_state_string(self, extra_string=None):
         print(self.state_string(extra_string))
 
+    def event_button(self, button):
+        return(button)
+
+    def event_axis_motion(self, axis, value):
+        self.axis_value[axis] = value
+
+    def event_hat_motion(self, hat, value):
+        self.axis_value[hat] = value
+
+    def event_unprocessed(self, event):
+        print("Unprocessed event", event)
+
+    def event_debugging(self, event):
+        print(self.state_string())
+
+    def event_axis_value(self, value):
+        if abs(value) < XboxState.JOYSTICK_DRIFT:
+            return(0.0)
+
+        return(round(value, 2))
+
     def event(self, event, debugging=False):
         if event.type == pygame.JOYBUTTONUP:
-            self.button_down_at[event.button] = 0
+            self.button_down_at[self.event_button(event.button)] = 0
         elif event.type == pygame.JOYBUTTONDOWN:
-            self.button_down_at[event.button] = time.perf_counter()
+            self.button_down_at[self.event_button(event.button)] = time.perf_counter()
         elif event.type == pygame.JOYAXISMOTION:
-            value = event.value
-
-            if abs(value) < XboxState.JOYSTICK_DRIFT:
-                value = 0.0
-
-            self.axis_value[event.axis] = round(value, 2)
+            self.event_axis_motion(event.axis, self.event_axis_value(event.value))
+        elif event.type == pygame.JOYHATMOTION:
+            self.event_hat_motion(event.hat, self.event_axis_value(event.value))
         else:
-            print("Unprocessed event:", event)
+            self.event_unprocessed(event)
 
         if debugging:
-            print(self.state_string())
+            self.event_debugging(event)
 
     def dictionary(self, debugging=False):
         d = {}
