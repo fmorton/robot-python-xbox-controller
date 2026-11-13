@@ -52,7 +52,7 @@ class XboxState:
         print(self.state_string(extra_string))
 
     def event_button(self, button):
-        return(button)
+        return button
 
     def event_axis_motion(self, axis, value):
         self.axis_value[axis] = value
@@ -68,9 +68,9 @@ class XboxState:
 
     def event_axis_value(self, value):
         if abs(value) < XboxState.JOYSTICK_DRIFT:
-            return(0.0)
+            return 0.0
 
-        return(round(value, 2))
+        return round(value, 2)
 
     def event(self, event, debugging=False):
         if event.type == pygame.JOYBUTTONUP:

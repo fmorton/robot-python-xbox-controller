@@ -3,7 +3,7 @@ from robot.xbox_state import XboxState
 
 class XboxStateWindows(XboxState):
     def event_button(self, button):
-        return(button)
+        return button
 
     def event_axis_motion(self, axis, value):
         self.axis_value[axis] = value

@@ -23,6 +23,7 @@ class XboxController:
         self.clock = pygame.time.Clock()
 
         self.state = globals()["XboxState" + platform.system()]() if (state is None) else state
+        self.state_name = self.state.__class__.__name__
 
         os.environ["SDL_VIDEODRIVER"] = "dummy"
 
