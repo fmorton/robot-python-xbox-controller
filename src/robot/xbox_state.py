@@ -67,6 +67,9 @@ class XboxState:
         print(self.state_string())
 
     def event_axis_value(self, value):
+        if isinstance(value, tuple):
+            return value
+
         if abs(value) < XboxState.JOYSTICK_DRIFT:
             return 0.0
 
