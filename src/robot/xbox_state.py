@@ -5,6 +5,12 @@ import time
 class XboxState:
     JOYSTICK_DRIFT = 0.18
 
+    AXIS_LEFT_X = 0
+    AXIS_LEFT_Y = 1
+    AXIS_RIGHT_X = 2
+    AXIS_RIGHT_Y = 3
+    AXIS_LEFT_TRIGGER = 4
+
     BUTTON_A = 0
     BUTTON_B = 1
     BUTTON_X = 2
@@ -109,8 +115,8 @@ class XboxState:
         d["view_button"] = self.button_down_milliseconds(4)
         d["xbox_button"] = self.button_down_milliseconds(5)
         d["menu_button"] = self.button_down_milliseconds(6)
-        d["left_stick_click"] = self.button_down_milliseconds(7)
-        d["right_stick_click"] = self.button_down_milliseconds(8)
+        d["left_joystick_button"] = self.button_down_milliseconds(7)
+        d["right_joystick_button"] = self.button_down_milliseconds(8)
         d["left_bumper"] = self.button_down_milliseconds(9)
         d["right_bumper"] = self.button_down_milliseconds(10)
         d["d_pad_up"] = self.button_down_milliseconds(11)

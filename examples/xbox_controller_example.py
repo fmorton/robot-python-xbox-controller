@@ -1,6 +1,7 @@
 import pygame
 
 from robot.xbox_controller import XboxController
+from robot.xbox_state import XboxState
 
 
 controller = XboxController().connect()
