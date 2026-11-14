@@ -1,44 +1,47 @@
+import time
+
 from robot.xbox_state import XboxState
+
 
 class XboxStateLinux(XboxState):
     def event_button_remap(self, button):
         if button == 3:
-            return(XboxState.BUTTON_X)
+            return XboxState.BUTTON_X
 
         if button == 4:
-            return(XboxState.BUTTON_Y)
+            return XboxState.BUTTON_Y
 
         if button == 6:
-            return(XboxState.BUTTON_LEFT_BUMPER)
+            return XboxState.BUTTON_LEFT_BUMPER
 
         if button == 7:
-            return(XboxState.BUTTON_RIGHT_BUMPER)
+            return XboxState.BUTTON_RIGHT_BUMPER
 
         if button == 10:
-            return(XboxState.BUTTON_VIEW)
+            return XboxState.BUTTON_VIEW
 
         if button == 11:
-            return(XboxState.BUTTON_MENU)
+            return XboxState.BUTTON_MENU
 
-        if button == 12:   # number not verified--causes QUIT somehow
-            return(XboxState.BUTTON_XBOX)
+        if button == 12:  # number not verified--causes QUIT somehow
+            return XboxState.BUTTON_XBOX
 
         if button == 13:
-            return(XboxState.BUTTON_LEFT_JOYSTICK)
+            return XboxState.BUTTON_LEFT_JOYSTICK
 
         if button == 14:
-            return(XboxState.BUTTON_RIGHT_JOYSTICK)
+            return XboxState.BUTTON_RIGHT_JOYSTICK
 
-        return(button)
+        return button
 
     def event_axis_remap(self, axis):
         if axis == 4:
-            return(XboxState.AXIS_RIGHT_TRIGGER)
+            return XboxState.AXIS_RIGHT_TRIGGER
 
         if axis == 5:
-            return(XboxState.AXIS_LEFT_TRIGGER)
+            return XboxState.AXIS_LEFT_TRIGGER
 
-        return(axis)
+        return axis
 
     def event_hat_motion_click_down(self, down_button, no_button):
         self.button_down_at[down_button] = time.perf_counter()
@@ -54,7 +57,7 @@ class XboxStateLinux(XboxState):
             self.button_down_at[plus_one_value] = 0
 
     def event_button(self, button):
-        return(self.event_button_remap(button))
+        return self.event_button_remap(button)
 
     def event_axis_motion(self, axis, value):
         self.axis_value[self.event_axis_remap(axis)] = value
